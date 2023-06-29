@@ -6,14 +6,14 @@ import {changeBackgroundColor} from "../../Functions/Other/changeBackgroundColor
 import {HangmanPopup} from "./HangmanPopup";
 import {Inputs} from "./Inputs/Inputs";
 import {Canvas} from "./Canvas/Canvas";
-
+import './style.css'
 export const Hangman = () =>{
 
     const [letter, setLetter] = useState<string>('');
     const [secretWord] = useState(SECRETS[Math.floor(Math.random() * SECRETS.length)]);
     // UseState need because word rerender after press key
     const [isWrong, setIsWrong] = useState<boolean>(false);
-
+    const wrong = useSelector((state:any) => state.rules.wrong);
     const trueAnswer = useSelector((state:any) => state.rules.trueAnswer);
     const backgroundStyle = JSON.parse(useSelector((state:any) => state.store.backgroundStyle));
     useEffect(() => {

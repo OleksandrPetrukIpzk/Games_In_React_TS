@@ -1,5 +1,5 @@
 import {Block} from "./Block";
-
+import './style.css'
 interface InputsInterface{
     secretWord: string,
     letter: string

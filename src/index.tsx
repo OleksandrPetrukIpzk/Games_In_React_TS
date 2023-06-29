@@ -26,6 +26,10 @@ const router = createBrowserRouter([
     {
         path: '/library',
         element: <BoughtElement/>
+    },
+    {
+        path: '/sudoku',
+        element: <Sudoku/>
     }
 ])
 

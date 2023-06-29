@@ -1,0 +1,10 @@
+.block{
+    padding: 30px;
+    margin: 10px;
+    border-bottom: 3px solid lightskyblue;
+    font-size: 30px;
+}
+.blocks{
+    display: flex;
+    margin-left: 30%;
+}

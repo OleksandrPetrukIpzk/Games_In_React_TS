@@ -1,0 +1,35 @@
+body{
+    margin: 0;
+    font-size: 20px;
+    color: white;
+    background: dodgerblue;
+    text-align: center;
+}
+.popup{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: cornflowerblue;
+    color: white;
+}
+.popup button{
+    padding: 10px 20px;
+    font-size: 15px;
+    border: 1px solid cornflowerblue;
+    background: cornflowerblue;
+    color: white;
+    cursor: pointer;
+}
+.popup button:hover{
+    border: 1px solid white;
+    background: white;
+    color: cornflowerblue;
+}
+.cartoon{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 100px;
+}
