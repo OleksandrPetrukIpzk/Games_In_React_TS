@@ -1,0 +1,27 @@
+.status__win {
+  background: green;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+.status__lose {
+  margin-top: 20px;
+  background: red;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.buttons {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.buttons button {
+  padding: 10px;
+  margin-left: 10px;
+  border: 1px solid black;
+}
+
+/*# sourceMappingURL=style.css.map */

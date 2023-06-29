@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+
+  &__table {
+    border: 2px solid black;
+    display: flex;
+    width: 155px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    margin-left: 10px;
+
+    &__number {
+      padding: 10px;
+      border: 1px solid black;
+      width: 30px;
+      height: 30px;
+      color: black;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    margin-left: 50px;
+
+    &__button {
+      padding: 10px;
+      border-radius: 100px;
+      margin: 10px;
+    }
+  }
+}

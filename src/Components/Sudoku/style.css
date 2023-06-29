@@ -1,0 +1,31 @@
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+}
+.main__table {
+  border: 2px solid black;
+  display: flex;
+  width: 155px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.main__table__number {
+  padding: 10px;
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  color: black;
+}
+.main__buttons {
+  display: flex;
+  margin-left: 50px;
+}
+.main__buttons__button {
+  padding: 10px;
+  border-radius: 100px;
+  margin: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */

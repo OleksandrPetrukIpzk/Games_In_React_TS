@@ -1,19 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {Provider} from "react-redux";
+import {store, persistor} from "./Redux";
+import {PersistGate} from "redux-persist/integration/react";
+import {Sudoku} from "./Components/Sudoku/Sudoku";
+import {Statistic} from "./Components/Statistic/Statistic";
+import {Shop} from "./Components/Shop/Shop";
+import {BoughtElement} from "./Components/BoughtElement/BoughtElement";
+import {Hangman} from "./Components/Hangman/Hangman";
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Hangman/>
+    },
+    {
+        path: '/statistic',
+        element: <Statistic/>
+    },
+    {
+        path: '/shop',
+        element: <Shop/>
+    },
+    {
+        path: '/library',
+        element: <BoughtElement/>
+    }
+])
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <RouterProvider router={router}/>
+        </PersistGate>
+    </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
