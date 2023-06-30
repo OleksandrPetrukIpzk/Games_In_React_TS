@@ -1,23 +1,25 @@
-import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {MINIMAL_WRONG_COUNT} from "../../Constants/hangman";
+import {useDispatch, useSelector} from "react-redux";
 import Popup from "reactjs-popup";
 import {Link} from "react-router-dom";
-interface HangmanPopupInterface{
+import {MINIMAL_WRONG_COUNT} from "../../Constants/hangman";
+
+interface HangmanPopupInterface {
     children: any,
     secretWord: string
 }
-export const HangmanPopup = ({children, secretWord}: HangmanPopupInterface) =>{
-    const {color, background} = JSON.parse(useSelector((state:any) => state.store.backgroundStyle));
-    const trueAnswer = useSelector((state:any) => state.rules.trueAnswer);
-    const infoGame = useSelector((state:any) => state.statistics.infoGame);
-    const repeatWord = useSelector((state:any) => state.statistics.repeatWord);
-    const listWords = JSON.parse(repeatWord);
-    let reward = 0;
+
+export const HangmanPopup = ({children, secretWord}: HangmanPopupInterface) => {
+    const {color, background} = JSON.parse(useSelector((state: any) => state.store.backgroundStyle));
+    const trueAnswer = useSelector((state: any) => state.rules.trueAnswer);
+    const infoGame = useSelector((state: any) => state.statistics.infoGame);
+    const repeatWord = useSelector((state: any) => state.statistics.repeatWord);
+    const listWords: Array<string> = JSON.parse(repeatWord);
+    let reward: number = 0;
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const isWin = trueAnswer === secretWord.length;
+        const isWin: boolean = trueAnswer === secretWord.length;
         if (isWin) {
             if (listWords.includes(secretWord)) {
                 reward = Math.ceil(secretWord.length / MINIMAL_WRONG_COUNT);

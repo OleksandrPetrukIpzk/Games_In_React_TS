@@ -1,6 +1,11 @@
+import {Action} from "redux";
 
+interface InitialStateInterface{
+    wrong: string,
+    trueAnswer: number
+}
 
-const initialState = {
+const initialState: InitialStateInterface = {
     wrong: '',
     trueAnswer: 0
 }

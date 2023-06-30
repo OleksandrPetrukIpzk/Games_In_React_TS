@@ -1,4 +1,11 @@
 
+interface InitialStateInterface{
+    targetId: number,
+    targetTable: number,
+    targetState: number,
+    prevStates: Array<object>,
+    redoStates: Array<object>,
+}
 
 const initialState = {
     targetId: 0,

@@ -1,14 +1,14 @@
 import {READY_SUDOKU} from "../../Constants/sudoku";
-import {Numbers} from "./checkEveryElement";
+import {NumbersInterface} from "./checkEveryElement";
 
-interface CreateSudoku {
+interface CreateSudokuInterface {
     (
         arrWhiteIds: Array<number>
-    ):Array<Array<Numbers>>
+    ):Array<Array<NumbersInterface>>
 }
-export const createSudoku : CreateSudoku = (arrWhiteIds) => {
-    const start = JSON.parse(JSON.stringify(READY_SUDOKU)).map((row:Array<object>) => {
-        return row.map((col:any) => {
+export const createSudoku : CreateSudokuInterface = (arrWhiteIds) => {
+    const start : Array<Array<NumbersInterface>> = JSON.parse(JSON.stringify(READY_SUDOKU)).map((row:Array<NumbersInterface>) => {
+        return row.map((col:NumbersInterface) => {
             if (!arrWhiteIds.includes(col.id)) {
                 col.number = 0;
             }

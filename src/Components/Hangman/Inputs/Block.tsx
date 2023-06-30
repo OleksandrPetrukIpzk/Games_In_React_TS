@@ -7,7 +7,7 @@ interface BlockInterface{
     secretWord: string
 }
 export const Block = ({value, letter, secretWord}:BlockInterface) =>{
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState<boolean>(false);
     const wrong = useSelector((state:any) => state.rules.wrong);
     const dispatch = useDispatch();
 

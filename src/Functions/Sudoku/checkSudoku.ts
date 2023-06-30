@@ -1,15 +1,21 @@
-import {Numbers} from "./checkEveryElement";
+import {NumbersInterface} from "./checkEveryElement";
 
-interface CheckSudoku {
-    (numbers: Array<Array<Numbers>>,
-     i: number, y: number, thisNumber: number, startCountRow: number, endCountRow: number, incrementRow: number, startCountColumn: number,
+interface CheckSudokuInterface {
+    (numbers: Array<Array<NumbersInterface>>,
+     i: number,
+     y: number,
+     thisNumber: number,
+     startCountRow: number,
+     endCountRow: number,
+     incrementRow: number,
+     startCountColumn: number,
      endCountColumn:number,
      incrementColumn:number
-    ): Array<any>
+    ): Array<number>
 }
 
-export const checkSudoku : CheckSudoku = (numbers, i, y, thisNumber, startCountRow, endCountRow, incrementRow, startCountColumn, endCountColumn, incrementColumn) => {
-    const arr = [];
+export const checkSudoku : CheckSudokuInterface = (numbers, i, y, thisNumber, startCountRow, endCountRow, incrementRow, startCountColumn, endCountColumn, incrementColumn) => {
+    const arr : Array<number> = [];
     for (let l = startCountRow; l < endCountRow; l += incrementRow) {
         for (let j = startCountColumn; j < endCountColumn; j += incrementColumn) {
             if (numbers[i][y].id !== numbers[l][j].id && thisNumber === numbers[l][j].number && thisNumber) {

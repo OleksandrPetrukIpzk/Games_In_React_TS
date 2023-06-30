@@ -1,9 +1,9 @@
-interface Action {
-    type: string,
-    payload: string,
+interface InitialStateInterface {
+    infoGame: string,
+    repeatWord: string,
 }
 
-const initialState = {
+const initialState : InitialStateInterface = {
     infoGame: "[]",
     repeatWord: "[]",
 }

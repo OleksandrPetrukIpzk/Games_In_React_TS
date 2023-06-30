@@ -1,24 +1,25 @@
-import {Numbers} from "../../../Functions/Sudoku/checkEveryElement";
-import {EMPTY_STRING, ZERO} from "../../../Constants/sudoku";
+import React, {Dispatch} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {changeNumber} from "../../../Functions/Sudoku/changeNumber";
+import {NumbersInterface} from "../../../Functions/Sudoku/checkEveryElement";
+import { ZERO} from "../../../Constants/sudoku";
 
-interface DeleteElement{
-    numbers: Array<Array<Numbers>>
-    setNumbers: any,
+interface DeleteElementInterface{
+    numbers: Array<Array<NumbersInterface>>
+    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersInterface>>>>,
     arrWhiteIds: Array<number>
 }
 
-export const DeleteElement = ({numbers, setNumbers, arrWhiteIds}:DeleteElement) =>{
+export const DeleteElement = ({numbers, setNumbers, arrWhiteIds}:DeleteElementInterface) =>{
     const targetId = useSelector((state: any) => state.sudoku.targetId);
-    const targetState = useSelector((state: any) => state.sudoku.targetState);
+    const targetState  = useSelector((state: any) => state.sudoku.targetState);
     const prevStates = useSelector((state: any) => state.sudoku.prevStates);
     const idTable = useSelector((state: any) => state.sudoku.idTable);
     const dispatch = useDispatch();
 
     const deleteElement = () =>{
         if(!arrWhiteIds.includes(targetId)) {
-            const changedPrevState = [];
+            const changedPrevState  = [];
             changedPrevState.push(...prevStates);
             changedPrevState.push({id: targetId, number: targetState})
             dispatch({type: 'ADD_PREV_CHANGE', payload: changedPrevState});

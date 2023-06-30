@@ -1,23 +1,28 @@
+import React, {Dispatch} from "react";
 import {useSelector} from "react-redux";
-interface Sort{
+
+interface SortInterface {
     props: string,
-    setList: any
+    setList: Dispatch<React.SetStateAction<Array<object>>>
 }
-interface Status{
+
+interface StatusInterface {
     status: string
 }
-export const Sort = ({props, setList}:Sort) =>{
+
+export const Sort = ({props, setList}: SortInterface) => {
     const infoGame = useSelector((state: any) => state.statistics.infoGame);
     const resetSort = () => {
         setList(JSON.parse(infoGame));
     }
     const handleSortWin = () => {
-        const sorted = JSON.parse(infoGame).filter((lose:Status) => lose.status);
+        const sorted = JSON.parse(infoGame).filter((lose: StatusInterface) => lose.status);
         setList(sorted);
     }
     const handleSortLose = () => {
-        const sorted = JSON.parse(infoGame).filter((lose:Status) => !lose.status);
+        const sorted = JSON.parse(infoGame).filter((lose: StatusInterface) => !lose.status);
         setList(sorted);
     }
-    return(<button onClick={() => (props === 'win' && handleSortWin()) || (props === 'lose' && handleSortLose()) || (props === 'reset' && resetSort())}>{props}</button>)
+    return (<button
+        onClick={() => (props === 'win' && handleSortWin()) || (props === 'lose' && handleSortLose()) || (props === 'reset' && resetSort())}>{props}</button>)
 }

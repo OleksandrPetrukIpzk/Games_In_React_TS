@@ -1,20 +1,20 @@
-import {Numbers} from "../../../Functions/Sudoku/checkEveryElement";
+import React, {Dispatch, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {fillStatus} from "../../../Functions/Sudoku/fillStatus";
-import {FOUR_CHOSE_BUTTON, NINE_CHOSE_BUTTON, SIX_CHOSE_BUTTON, TWO_CHOSE_BUTTON} from "../../../Constants/sudoku";
 import {changeNumber} from "../../../Functions/Sudoku/changeNumber";
+import {fillStatus} from "../../../Functions/Sudoku/fillStatus";
+import {NumbersInterface} from "../../../Functions/Sudoku/checkEveryElement";
+import {FOUR_CHOSE_BUTTON, NINE_CHOSE_BUTTON, SIX_CHOSE_BUTTON, TWO_CHOSE_BUTTON} from "../../../Constants/sudoku";
 
-interface ChangeNumber {
+interface ChangeNumberInterface {
     number: number,
-    numbers: Array<Array<Numbers>>,
-    setNumbers: any,
+    numbers: Array<Array<NumbersInterface>>,
+    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersInterface>>>>,
     arrWhiteIds: Array<number>
 }
 
-export const ChangeNumber = ({number, numbers, setNumbers, arrWhiteIds}: ChangeNumber) => {
+export const ChangeNumber = ({number, numbers, setNumbers, arrWhiteIds}: ChangeNumberInterface) => {
 
-    const [status, setStatus] = useState<number>(0);
+    const [status, setStatus] = useState(0);
     const targetState = useSelector((state: any) => state.sudoku.targetState);
     const targetId = useSelector((state: any) => state.sudoku.targetId);
     const prevStates = useSelector((state: any) => state.sudoku.prevStates);
@@ -23,7 +23,6 @@ export const ChangeNumber = ({number, numbers, setNumbers, arrWhiteIds}: ChangeN
 
     const addPrevChange = () => {
         if (!arrWhiteIds.includes(targetId)) {
-
             const changedPrevState = [];
             changedPrevState.push(...prevStates);
             changedPrevState.push({id: targetId, number: targetState})

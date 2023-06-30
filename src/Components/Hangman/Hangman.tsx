@@ -1,26 +1,27 @@
-import {MAXIMUM_WRONG_NUMBER, MINIMAL_WRONG_COUNT, SECRETS} from "../../Constants/hangman";
-import {Header} from "../Header/Header";
-import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {changeBackgroundColor} from "../../Functions/Other/changeBackgroundColor";
+import {useSelector} from "react-redux";
+import {Header} from "../Header/Header";
 import {HangmanPopup} from "./HangmanPopup";
 import {Inputs} from "./Inputs/Inputs";
 import {Canvas} from "./Canvas/Canvas";
+import {changeBackgroundColor} from "../../Functions/Other/changeBackgroundColor";
+import {MAXIMUM_WRONG_NUMBER, MINIMAL_WRONG_COUNT, SECRETS} from "../../Constants/hangman";
 import './style.css'
-export const Hangman = () =>{
+
+export const Hangman = () => {
 
     const [letter, setLetter] = useState<string>('');
     const [secretWord] = useState(SECRETS[Math.floor(Math.random() * SECRETS.length)]);
     // UseState need because word rerender after press key
     const [isWrong, setIsWrong] = useState<boolean>(false);
-    const wrong = useSelector((state:any) => state.rules.wrong);
-    const trueAnswer = useSelector((state:any) => state.rules.trueAnswer);
-    const backgroundStyle = JSON.parse(useSelector((state:any) => state.store.backgroundStyle));
+    const wrong = useSelector((state: any) => state.rules.wrong);
+    const trueAnswer = useSelector((state: any) => state.rules.trueAnswer);
+    const backgroundStyle = JSON.parse(useSelector((state: any) => state.store.backgroundStyle));
     useEffect(() => {
         if (Math.round(wrong.length / MINIMAL_WRONG_COUNT) === MAXIMUM_WRONG_NUMBER) {
             setIsWrong(true);
         } else {
-            const onKeyPress = (e:any) => setLetter(e.key.toLowerCase());
+            const onKeyPress = (e: any) => setLetter(e.key.toLowerCase());
             document.addEventListener('keypress', onKeyPress);
             return () => {
                 document.removeEventListener('keypress', onKeyPress);
@@ -28,9 +29,9 @@ export const Hangman = () =>{
         }
     }, [letter])
 
-    useEffect(()=>{
+    useEffect(() => {
         changeBackgroundColor(backgroundStyle);
-    },[])
+    }, [])
 
     return (
         <div>
@@ -38,7 +39,7 @@ export const Hangman = () =>{
             <h2>Hangman</h2>
             <p>Find the hidden word - Enter a letter</p>
             <div className='cartoon'>
-                <Canvas />
+                <Canvas/>
                 <div>
                     <h2>Wrong:</h2>
                     <p>{wrong}</p>

@@ -1,22 +1,22 @@
-import {Header} from "../Header/Header";
-import {useSelector} from "react-redux";
 import {useEffect} from "react";
-import {changeBackgroundColor} from "../../Functions/Other/changeBackgroundColor";
+import {useSelector} from "react-redux";
+import {Header} from "../Header/Header";
 import {Library} from "./Library/Library";
+import {changeBackgroundColor} from "../../Functions/Other/changeBackgroundColor";
 
-export const BoughtElement = () =>{
+export const BoughtElement = () => {
 
-    const backgroundStyle = JSON.parse(useSelector((state:any) => state.store.backgroundStyle));
+    const backgroundStyle = JSON.parse(useSelector((state: any) => state.store.backgroundStyle));
 
-    useEffect(()=>{
+    useEffect(() => {
         changeBackgroundColor(backgroundStyle);
-    },[])
+    }, [])
 
-    return(
+    return (
         <div>
             <Header/>
-        <h2>Library</h2>
-        <Library/>
+            <h2>Library</h2>
+            <Library/>
         </div>
     );
 }

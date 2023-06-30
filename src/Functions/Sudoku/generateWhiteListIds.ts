@@ -1,14 +1,14 @@
-interface GenerateWhiteListIds{
+interface GenerateWhiteListIdsInterface{
     (
         difficult: number
-    ):Array<number> | void
+    ):any
 }
-export const generateWhiteListIds: GenerateWhiteListIds = (difficult) => {
+export const generateWhiteListIds: GenerateWhiteListIdsInterface = (difficult) => {
     if (difficult > 0) {
-        let count = 80 - difficult;
+        let count : number = 80 - difficult;
         const arrIds : Array<number> = [];
         while (count > 0) {
-            const randomId = Math.ceil(Math.random() * (80));
+            const randomId : number = Math.ceil(Math.random() * (80));
             if (!arrIds.includes(randomId)) {
                 arrIds.push(randomId);
                 count -= 1;

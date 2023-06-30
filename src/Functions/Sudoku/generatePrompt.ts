@@ -1,17 +1,18 @@
 import {READY_SUDOKU} from "../../Constants/sudoku";
-import {Numbers} from "./checkEveryElement";
-interface GeneratePrompt{
+import {NumbersInterface} from "./checkEveryElement";
+import {Dispatch} from "react";
+interface GeneratePromptInterface{
     (
-        numbers:Array<Array<Numbers>>,
-        setNumbers:any,
+        numbers:Array<Array<NumbersInterface>>,
+        setNumbers: Dispatch<Array<Array<NumbersInterface>>>,
         targetId:number
     ):void
 }
-export const generatePrompt : GeneratePrompt = (numbers, setNumbers, targetId) => {
+export const generatePrompt : GeneratePromptInterface = (numbers, setNumbers, targetId) => {
     if (targetId !== 0) {
-        let prompt = 0;
-        READY_SUDOKU.map((row:any)=>{
-                return row.map((col:any) =>{
+        let prompt : number = 0;
+        READY_SUDOKU.map((row:Array<NumbersInterface>)=>{
+                return row.map((col : NumbersInterface) =>{
                     if(col.id === targetId){
                         prompt = col.number;
                     }
@@ -19,7 +20,7 @@ export const generatePrompt : GeneratePrompt = (numbers, setNumbers, targetId) =
             }
         );
 
-        const promptNumbers = numbers.map(row => {
+        const promptNumbers : Array<Array<NumbersInterface>> = numbers.map(row => {
             return row.map(number => {
                 if (number.id === targetId) {
                     return {...number, number: prompt}

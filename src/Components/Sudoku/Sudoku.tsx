@@ -1,23 +1,23 @@
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {createSudoku} from "../../Functions/Sudoku/createSudoku";
-import {Numbers} from "../../Functions/Sudoku/checkEveryElement";
-import {searchTroubles} from "../../Functions/Sudoku/searchTroubles";
-import {ZERO} from "../../Constants/sudoku";
-import {isWin} from "../../Functions/Sudoku/isWin";
-import {changeBackgroundColor} from "../../Functions/Other/changeBackgroundColor";
+import {Buttons} from "./Buttons/Buttons";
 import {Header} from "../Header/Header";
 import {ChoseDifficult} from "./ChoseDifficult";
 import {SudokuPopup} from "./SudokuPopup";
 import {Table} from "./Table/Table";
 import {generateRandomId} from "../../Functions/Sudoku/generateRandomId";
+import {createSudoku} from "../../Functions/Sudoku/createSudoku";
+import {searchTroubles} from "../../Functions/Sudoku/searchTroubles";
+import {isWin} from "../../Functions/Sudoku/isWin";
+import {changeBackgroundColor} from "../../Functions/Other/changeBackgroundColor";
+import {NumbersInterface} from "../../Functions/Sudoku/checkEveryElement";
+import {ZERO} from "../../Constants/sudoku";
 import './style.css'
-import {Buttons} from "./Buttons/Buttons";
 
 export const Sudoku = () => {
     const [difficult, setDifficult] = useState<number>(0);
     const [arrWhiteIds, setArrWhiteIds] = useState<Array<number>>([]);
-    const [numbers, setNumbers] = useState<Array<Array<Numbers>>>([]);
+    const [numbers, setNumbers] = useState<Array<Array<NumbersInterface>>>([]);
     const [dangerIds, setDangerIds] = useState<Array<number>>([]);
     const [isWinGame, setIsWinGame] = useState<boolean>(false);
     const backgroundStyle = JSON.parse(useSelector((state: any) => state.store.backgroundStyle));
@@ -40,12 +40,13 @@ export const Sudoku = () => {
         {difficult === ZERO && <ChoseDifficult setDifficult={setDifficult} setArrWhiteIds={setArrWhiteIds}/>}
         {(isWinGame && difficult > ZERO) && <SudokuPopup/>}
         <div className='main'>
-            {difficult > ZERO && numbers?.map((tableNumber: Array<Numbers>, index) => <Table tableNumber={tableNumber}
-                                                                                             dangerIds={dangerIds}
-                                                                                             idTable={generateRandomId()}
-                                                                                             index={index}
-                                                                                             numbers={numbers}/>)}
-            { difficult > ZERO && <Buttons arrWhiteIds={arrWhiteIds} numbers={numbers} setNumbers={setNumbers} />}
+            {difficult > ZERO && numbers?.map((tableNumber: Array<NumbersInterface>, index) => <Table
+                tableNumber={tableNumber}
+                dangerIds={dangerIds}
+                idTable={generateRandomId()}
+                index={index}
+                numbers={numbers}/>)}
+            {difficult > ZERO && <Buttons arrWhiteIds={arrWhiteIds} numbers={numbers} setNumbers={setNumbers}/>}
         </div>
     </div>)
 }

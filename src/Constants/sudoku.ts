@@ -1,7 +1,8 @@
 import {mixGenerate} from "../Functions/Sudoku/mixGenerate";
+import {NumbersInterface} from "../Functions/Sudoku/checkEveryElement";
 
 
-export const ANSWER = [[{id: 1, number: 0}, {id: 2, number: 0}, {id: 3, number: 0}, {id: 4, number: 0}, {
+export const ANSWER : Array<Array<NumbersInterface>> = [[{id: 1, number: 0}, {id: 2, number: 0}, {id: 3, number: 0}, {id: 4, number: 0}, {
     id: 5,
     number: 0
 }, {id: 6, number: 0}, {id: 7, number: 0}, {id: 8, number: 0}, {id: 9, number: 0},], [{
@@ -52,9 +53,9 @@ export const ANSWER = [[{id: 1, number: 0}, {id: 2, number: 0}, {id: 3, number: 
 }, {id: 81, number: 0},],
 
 ]
-const typeGenerate = Math.ceil(Math.random() * 8);
+const typeGenerate : number = Math.ceil(Math.random() * 8);
 
-export const READY_SUDOKU = ANSWER.map((row, index) => {
+export const READY_SUDOKU : any = ANSWER.map((row : Array<NumbersInterface>, index) => {
     switch (typeGenerate) {
         case 1: {
             return mixGenerate(0, 6, 3, 1, 7, 4, 2,8,5, index, row);
@@ -87,20 +88,20 @@ export const READY_SUDOKU = ANSWER.map((row, index) => {
 })
 
 
-export const REWARD = 100;
+export const REWARD : number = 100;
 
-export const NUMBER_BUTTONS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+export const NUMBER_BUTTONS : Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export const TWO_CHOSE_BUTTON = 2;
+export const TWO_CHOSE_BUTTON: number = 2;
 
-export const FOUR_CHOSE_BUTTON = 4;
+export const FOUR_CHOSE_BUTTON: number = 4;
 
-export const SIX_CHOSE_BUTTON = 6;
+export const SIX_CHOSE_BUTTON : number= 6;
 
-export const NINE_CHOSE_BUTTON = 9;
+export const NINE_CHOSE_BUTTON: number = 9;
 
-export const ZERO = 0;
+export const ZERO: number = 0;
 
 export const EMPTY_STRING = "";
 
-export const ONE = 1;
+export const ONE: number = 1;

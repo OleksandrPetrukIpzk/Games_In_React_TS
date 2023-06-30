@@ -1,6 +1,12 @@
+import React, {Dispatch} from "react";
+import {NumbersInterface} from "../../../Functions/Sudoku/checkEveryElement";
 import {READY_SUDOKU} from "../../../Constants/sudoku";
 
-export const AnswerAllSudoku = ({setNumbers}:any) => {
+interface AnswerAllSudokuInterface {
+    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersInterface>>>>
+}
+
+export const AnswerAllSudoku = ({setNumbers}: AnswerAllSudokuInterface) => {
     const answerAllSudoku = () => {
         setNumbers(READY_SUDOKU);
     }

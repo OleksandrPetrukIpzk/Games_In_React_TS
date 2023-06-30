@@ -1,10 +1,10 @@
-interface Action {
-    type: string,
+interface InitialStateInterface {
     coins: number,
-    payload: string
+    boughtElement: string,
+    backgroundStyle: string
 }
 
-const initialState = {
+const initialState : InitialStateInterface = {
     coins: 0,
     boughtElement: '[]',
     backgroundStyle: '{}',

@@ -1,19 +1,18 @@
+import {NumbersInterface} from "./checkEveryElement";
+import React, {Dispatch} from "react";
 
-interface ChangeNumber{
-    (numbers: Array<Array<object>>,
+
+interface ChangeNumberInterface{
+    (numbers: Array<Array<NumbersInterface>>,
      targetId: number,
      number: number,
-     setNumbers: any
-
+     setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersInterface>>>>,
     ):void
 }
-interface Column{
-    id?: number,
-    number?: number
-}
-export const changeNumber : ChangeNumber = (numbers, targetId, number, setNumbers) =>{
-    const oldNumbers = numbers.map( row =>{
-            return row.map((col:Column) => {
+
+export const changeNumber : ChangeNumberInterface = (numbers, targetId, number, setNumbers) =>{
+    const oldNumbers : Array<Array<NumbersInterface>> = numbers.map( row =>{
+            return row.map((col:NumbersInterface) => {
                 if(col.id === targetId){
                     return {...col, number: number}
                 }

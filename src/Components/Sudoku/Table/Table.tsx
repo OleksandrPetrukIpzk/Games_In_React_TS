@@ -1,19 +1,20 @@
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
+import {Number} from "./Number";
 import {colorTable} from "../../../Functions/Sudoku/colorTable";
 import {hasSimilarElements} from "../../../Functions/Sudoku/hasSimilarElements";
-import {Numbers} from "../../../Functions/Sudoku/checkEveryElement";
-import {Number} from "./Number";
+import {NumbersInterface} from "../../../Functions/Sudoku/checkEveryElement";
 import '../style.css'
-interface Table {
-    tableNumber: Array<Numbers>,
+
+interface TableInterface {
+    tableNumber: Array<NumbersInterface>,
     idTable: number,
     dangerIds: Array<number>,
     index: number,
     numbers: Array<Array<any>>
 }
 
-export const Table = ({tableNumber, idTable, dangerIds, index, numbers}: Table) => {
+export const Table = ({tableNumber, idTable, dangerIds, index, numbers}: TableInterface) => {
 
     const targetId = useSelector((state: any) => state.sudoku.targetId);
     const lastTableId = tableNumber[tableNumber.length - 1]?.id;

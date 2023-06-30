@@ -1,14 +1,14 @@
-import {checkEveryElement, Numbers} from "./checkEveryElement";
+import {checkEveryElement, NumbersInterface} from "./checkEveryElement";
 
-interface SearchTroubles{
-    (numbers:Array<Array<any>>
+interface SearchTroublesInterface{
+    (numbers:Array<Array<NumbersInterface>>
     ):Array<number>
 }
 
 
-export const searchTroubles:SearchTroubles = (numbers) => {
+export const searchTroubles:SearchTroublesInterface = (numbers) => {
 
-    const dangerId = [];
+    const dangerId : Array<number> = [];
 
     for (let i = 0; i < numbers.length; i++) {
         for (let y = 0; y < 9; y++) {

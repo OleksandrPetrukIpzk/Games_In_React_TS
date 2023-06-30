@@ -1,12 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
-interface ElementInterface{
-    price: number
-}
-export const Buy = ({element}:any) => {
-    const coins = useSelector((state:any) => state.store.coins);
-    const boughtElement = JSON.parse(useSelector((state:any) => state.store.boughtElement));
+import {ElementInterface} from "../../../Constants/hangman";
+
+export const Buy = ({element}: any) => {
+    const coins = useSelector((state: any) => state.store.coins);
+    const boughtElement = JSON.parse(useSelector((state: any) => state.store.boughtElement));
     const dispatch = useDispatch();
-    const buyElement = (element:ElementInterface) => {
+    const buyElement = (element: ElementInterface) => {
         const {price} = element;
         if (coins > price) {
             boughtElement.push(element);

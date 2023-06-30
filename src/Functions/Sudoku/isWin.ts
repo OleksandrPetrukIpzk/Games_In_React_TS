@@ -1,9 +1,9 @@
-import {Numbers} from "./checkEveryElement";
+import {NumbersInterface} from "./checkEveryElement";
 
-interface IsWin{
-    (numbers: Array<Array<Numbers>>,):boolean
+interface IsWinInterface{
+    (numbers: Array<Array<NumbersInterface>>,):boolean
 }
-export const isWin: IsWin = (numbers) => {
+export const isWin: IsWinInterface = (numbers) => {
     for (let i = 0; i < numbers.length; i++) {
         for (let j = 0; j < 9; j++) {
             if (numbers[i][j].number === 0) {

@@ -1,33 +1,31 @@
+import React, {Dispatch} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {NumbersInterface} from "../../../Functions/Sudoku/checkEveryElement";
 import {ONE} from "../../../Constants/sudoku";
-import {Numbers} from "../../../Functions/Sudoku/checkEveryElement";
 
-interface PrevElement {
-    numbers: Array<Array<Numbers>>,
-    setNumbers: any,
+
+interface PrevElementInterface {
+    numbers: Array<Array<NumbersInterface>>,
+    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersInterface>>>>,
     props: string
 }
 
-interface StateInterface {
-    id?: number,
-    number?: number
-}
-
-export const PrevElement = ({numbers, setNumbers, props}: PrevElement) => {
+export const PrevElement = ({numbers, setNumbers, props}: PrevElementInterface) => {
 
     const prevStates = useSelector((state: any) => state.sudoku.prevStates);
     const redoStates = useSelector((state: any) => state.sudoku.redoStates);
     const dispatch = useDispatch();
 
     const prevElement = (props: string) => {
-        const state: StateInterface = {};
+
         let tableId = 0;
-        const changedPrevState = [];
+        const state: NumbersInterface = {id: 0, number: 0};
+        const changedPrevState: Array<NumbersInterface> = [];
         changedPrevState.push(...prevStates);
-        const changedRedoState = [];
+        const changedRedoState: Array<NumbersInterface> = [];
         changedRedoState.push(...redoStates);
         if (props === "prev" && prevStates.length > 0) {
-            const prevNumbers = numbers.map((row, index) => {
+            const prevNumbers: Array<Array<NumbersInterface>> = numbers.map((row, index) => {
                 return row.map(num => {
                     if (num.id === prevStates[prevStates.length - ONE].id) {
                         tableId = index;
@@ -43,7 +41,7 @@ export const PrevElement = ({numbers, setNumbers, props}: PrevElement) => {
             setNumbers(prevNumbers);
 
         } else if (props === "redo" && redoStates.length > 0) {
-            const redoNumbers = numbers.map((row, index) => {
+            const redoNumbers: Array<Array<NumbersInterface>> = numbers.map((row, index) => {
                 return row.map(num => {
                     if (num.id === redoStates[redoStates.length - ONE].id) {
                         tableId = index;
