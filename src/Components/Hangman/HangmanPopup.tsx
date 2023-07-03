@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Popup from "reactjs-popup";
 import {Link} from "react-router-dom";
 import {MINIMAL_WRONG_COUNT} from "../../Constants/hangman";
+import axios from "axios";
 
 interface HangmanPopupInterface {
     children: any,
@@ -14,7 +15,9 @@ export const HangmanPopup = ({children, secretWord}: HangmanPopupInterface) => {
     const trueAnswer = useSelector((state: any) => state.rules.trueAnswer);
     const infoGame = useSelector((state: any) => state.statistics.infoGame);
     const repeatWord = useSelector((state: any) => state.statistics.repeatWord);
+    const userName = useSelector((state: any) => state.statistics.userName);
     const listWords: Array<string> = JSON.parse(repeatWord);
+
     let reward: number = 0;
     const dispatch = useDispatch();
 
@@ -29,14 +32,23 @@ export const HangmanPopup = ({children, secretWord}: HangmanPopupInterface) => {
                 dispatch({type: 'ADD_REPEAT_WORD', payload: JSON.stringify(listWords)})
             }
         }
-        const data = JSON.parse(infoGame);
-        data.push({
-            secretWord,
-            status: isWin,
-            time: new Date(),
+        const datas : Array<object> = JSON.parse(infoGame);
+        datas.push({
+           name: userName,
+            isWin,
+            time: Date(),
+            commentaries: secretWord,
         });
-        dispatch({type: 'ADD_LIST', payload: JSON.stringify(data)});
+        const data = {
+            name: userName,
+            isWin,
+            time: Date(),
+            commentaries: secretWord,
+        }
+        axios.post('http://localhost:5000/data', data).then(e => console.log(e)).catch(err => console.log(err))
+        dispatch({type: 'ADD_LIST', payload: JSON.stringify(datas)});
         dispatch({type: 'WIN_MONEY', payload: reward});
+
     }, []);
 
     const handleReset = () => {

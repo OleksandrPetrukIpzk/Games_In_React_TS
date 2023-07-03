@@ -7,7 +7,7 @@ export const Buy = ({element}: any) => {
     const dispatch = useDispatch();
     const buyElement = (element: ElementInterface) => {
         const {price} = element;
-        if (coins > price) {
+        if (coins > price || coins === 0) {
             boughtElement.push(element);
             dispatch({type: 'BUY_ELEMENT', payload: price});
             dispatch({type: 'ADD_ELEMENT_TO_LIBRARY', payload: JSON.stringify(boughtElement)});

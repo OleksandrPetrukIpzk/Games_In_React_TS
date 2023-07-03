@@ -1,11 +1,13 @@
 interface InitialStateInterface {
     infoGame: string,
     repeatWord: string,
+    userName: string
 }
 
 const initialState : InitialStateInterface = {
     infoGame: "[]",
     repeatWord: "[]",
+    userName: "",
 }
 
 const statisticReducer = (state = initialState, action: any) => {
@@ -14,7 +16,12 @@ const statisticReducer = (state = initialState, action: any) => {
             return {...state, infoGame: action.payload}
         case 'ADD_REPEAT_WORD':
             return {...state, repeatWord: action.payload}
-
+        case 'ADD_USER':{
+            return {...state, userName: action.payload}
+        }
+        case 'REMOVE_USER':{
+            return {...state, userName: ''}
+        }
         default:
             return state
     }

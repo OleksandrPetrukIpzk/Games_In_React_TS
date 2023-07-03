@@ -7,7 +7,7 @@ interface SortInterface {
 }
 
 interface StatusInterface {
-    status: string
+    isWin: boolean
 }
 
 export const Sort = ({props, setList}: SortInterface) => {
@@ -16,11 +16,11 @@ export const Sort = ({props, setList}: SortInterface) => {
         setList(JSON.parse(infoGame));
     }
     const handleSortWin = () => {
-        const sorted = JSON.parse(infoGame).filter((lose: StatusInterface) => lose.status);
+        const sorted = JSON.parse(infoGame).filter((lose: StatusInterface) => lose.isWin);
         setList(sorted);
     }
     const handleSortLose = () => {
-        const sorted = JSON.parse(infoGame).filter((lose: StatusInterface) => !lose.status);
+        const sorted = JSON.parse(infoGame).filter((lose: StatusInterface) => !lose.isWin);
         setList(sorted);
     }
     return (<button
