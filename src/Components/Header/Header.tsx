@@ -2,17 +2,19 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {LogOut} from "./LogOut";
 import {useNavigate} from "react-router";
-import {useEffect} from "react";
+import {FC, useEffect} from "react";
 
-export const Header = () => {
+export const Header: FC = () => {
     const coins = useSelector((state: any) => state.store.coins);
     const userName = useSelector((state: any) => state.statistics.userName);
     const navigate = useNavigate();
+
     useEffect(() => {
         if (userName === '') {
             navigate('/login')
         }
     }, [])
+
     return (
         <div>
             <Link to='/sudoku'>Sudoku</Link>

@@ -1,26 +1,29 @@
-import React, {Dispatch} from "react";
+import React, {Dispatch, FC} from "react";
 import {useSelector} from "react-redux";
+
+interface StatusInterface {
+    isWin: boolean,
+    time: Date,
+    commentaries: string
+}
 
 interface SortInterface {
     props: string,
-    setList: Dispatch<React.SetStateAction<Array<object>>>
+    setList: Dispatch<React.SetStateAction<Array<StatusInterface>>>
+    allInfoGame: Array<StatusInterface>
 }
 
-interface StatusInterface {
-    isWin: boolean
-}
 
-export const Sort = ({props, setList}: SortInterface) => {
-    const infoGame = useSelector((state: any) => state.statistics.infoGame);
+export const Sort = ({props, allInfoGame, setList,}: SortInterface) => {
     const resetSort = () => {
-        setList(JSON.parse(infoGame));
+        setList(allInfoGame);
     }
     const handleSortWin = () => {
-        const sorted = JSON.parse(infoGame).filter((lose: StatusInterface) => lose.isWin);
+        const sorted = allInfoGame.filter((lose: StatusInterface) => lose.isWin);
         setList(sorted);
     }
     const handleSortLose = () => {
-        const sorted = JSON.parse(infoGame).filter((lose: StatusInterface) => !lose.isWin);
+        const sorted = allInfoGame.filter((lose: StatusInterface) => !lose.isWin);
         setList(sorted);
     }
     return (<button

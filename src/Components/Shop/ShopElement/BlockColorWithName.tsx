@@ -1,3 +1,4 @@
+
 export const BlockColorWithName = ({element}: any) => {
     const {background, name} = element;
     return (<div>

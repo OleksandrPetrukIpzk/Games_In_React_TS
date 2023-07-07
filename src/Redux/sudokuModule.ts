@@ -1,5 +1,4 @@
-
-interface InitialStateInterface{
+interface InitialStateInterface {
     targetId: number,
     targetTable: number,
     targetState: number,
@@ -7,7 +6,7 @@ interface InitialStateInterface{
     redoStates: Array<object>,
 }
 
-const initialState = {
+const initialState: InitialStateInterface = {
     targetId: 0,
     targetTable: 0,
     targetState: 0,

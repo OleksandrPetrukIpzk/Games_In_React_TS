@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {Header} from "../Header/Header";
 import {HangmanPopup} from "./HangmanPopup";
@@ -8,15 +8,16 @@ import {changeBackgroundColor} from "../../Functions/Other/changeBackgroundColor
 import {MAXIMUM_WRONG_NUMBER, MINIMAL_WRONG_COUNT, SECRETS} from "../../Constants/hangman";
 import './style.css'
 
-export const Hangman = () => {
+export const Hangman: FC = () => {
 
     const [letter, setLetter] = useState<string>('');
+    const [isWrong, setIsWrong] = useState<boolean>(false);
     const [secretWord] = useState(SECRETS[Math.floor(Math.random() * SECRETS.length)]);
     // UseState need because word rerender after press key
-    const [isWrong, setIsWrong] = useState<boolean>(false);
     const wrong = useSelector((state: any) => state.rules.wrong);
     const trueAnswer = useSelector((state: any) => state.rules.trueAnswer);
     const backgroundStyle = JSON.parse(useSelector((state: any) => state.store.backgroundStyle));
+
     useEffect(() => {
         if (Math.round(wrong.length / MINIMAL_WRONG_COUNT) === MAXIMUM_WRONG_NUMBER) {
             setIsWrong(true);

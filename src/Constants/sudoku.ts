@@ -1,8 +1,14 @@
 import {mixGenerate} from "../Functions/Sudoku/mixGenerate";
-import {NumbersInterface} from "../Functions/Sudoku/checkEveryElement";
 
+export type NumbersType = {
+    id: number,
+    number: number
+}
 
-export const ANSWER : Array<Array<NumbersInterface>> = [[{id: 1, number: 0}, {id: 2, number: 0}, {id: 3, number: 0}, {id: 4, number: 0}, {
+export const ANSWER: Array<Array<NumbersType>> = [[{id: 1, number: 0}, {id: 2, number: 0}, {id: 3, number: 0}, {
+    id: 4,
+    number: 0
+}, {
     id: 5,
     number: 0
 }, {id: 6, number: 0}, {id: 7, number: 0}, {id: 8, number: 0}, {id: 9, number: 0},], [{
@@ -53,55 +59,54 @@ export const ANSWER : Array<Array<NumbersInterface>> = [[{id: 1, number: 0}, {id
 }, {id: 81, number: 0},],
 
 ]
-const typeGenerate : number = Math.ceil(Math.random() * 8);
+const typeGenerate: number = Math.ceil(Math.random() * 8);
 
-export const READY_SUDOKU : any = ANSWER.map((row : Array<NumbersInterface>, index) => {
+export const READY_SUDOKU: any = ANSWER.map((row: Array<NumbersType>, index) => {
     switch (typeGenerate) {
         case 1: {
-            return mixGenerate(0, 6, 3, 1, 7, 4, 2,8,5, index, row);
+            return mixGenerate(0, 6, 3, 1, 7, 4, 2, 8, 5, index, row);
         }
         case 2: {
-            return mixGenerate(1, 4, 7, 0, 3, 6, 2,5,8, index, row);
+            return mixGenerate(1, 4, 7, 0, 3, 6, 2, 5, 8, index, row);
         }
-        case 3:{
-            return mixGenerate(1, 4, 7, 0, 3, 6, 2,5,8, index, row);
+        case 3: {
+            return mixGenerate(1, 4, 7, 0, 3, 6, 2, 5, 8, index, row);
         }
-        case 4:{
-            return mixGenerate(2, 5, 8, 0, 3, 6, 1,4,7, index, row);
+        case 4: {
+            return mixGenerate(2, 5, 8, 0, 3, 6, 1, 4, 7, index, row);
         }
-        case 5:{
-            return mixGenerate(6, 3, 0, 4, 7, 1, 5,8,2, index, row);
+        case 5: {
+            return mixGenerate(6, 3, 0, 4, 7, 1, 5, 8, 2, index, row);
         }
-        case 6:{
-            return mixGenerate(3, 0, 6, 7, 4, 1, 8,5,2, index, row);
+        case 6: {
+            return mixGenerate(3, 0, 6, 7, 4, 1, 8, 5, 2, index, row);
         }
         case 7: {
-            return mixGenerate(6, 3, 0, 7, 4, 1, 8,5,2, index, row);
+            return mixGenerate(6, 3, 0, 7, 4, 1, 8, 5, 2, index, row);
         }
         case 8: {
-            return mixGenerate(3, 6, 0, 4, 7, 1, 5,8,2, index, row);
+            return mixGenerate(3, 6, 0, 4, 7, 1, 5, 8, 2, index, row);
         }
-        default: break;
+        default:
+            break;
     }
 
 
 })
 
 
-export const REWARD : number = 100;
+export const REWARD: number = 100;
 
-export const NUMBER_BUTTONS : Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+export const NUMBER_BUTTONS: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export const TWO_CHOSE_BUTTON: number = 2;
 
 export const FOUR_CHOSE_BUTTON: number = 4;
 
-export const SIX_CHOSE_BUTTON : number= 6;
+export const SIX_CHOSE_BUTTON: number = 6;
 
 export const NINE_CHOSE_BUTTON: number = 9;
 
 export const ZERO: number = 0;
-
-export const EMPTY_STRING = "";
 
 export const ONE: number = 1;

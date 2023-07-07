@@ -1,6 +1,4 @@
-import {Action} from "redux";
-
-interface InitialStateInterface{
+interface InitialStateInterface {
     wrong: string,
     trueAnswer: number
 }

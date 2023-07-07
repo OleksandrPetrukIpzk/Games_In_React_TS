@@ -1,9 +1,10 @@
 import React, {Dispatch} from "react";
 
-interface ColorElementInterface{
+interface ColorElementInterface {
     (setStyle: Dispatch<React.SetStateAction<object>>,
-    color: string): void
+     color: string): void
 }
-export const colorElement : ColorElementInterface = (setStyle, color) =>{
-    setStyle({color: "black", background: color });
+
+export const colorElement: ColorElementInterface = (setStyle, color) => {
+    setStyle({color: "black", background: color});
 }

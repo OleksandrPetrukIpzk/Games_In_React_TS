@@ -2,13 +2,18 @@ import React, {Dispatch, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {changeNumber} from "../../../Functions/Sudoku/changeNumber";
 import {fillStatus} from "../../../Functions/Sudoku/fillStatus";
-import {NumbersInterface} from "../../../Functions/Sudoku/checkEveryElement";
-import {FOUR_CHOSE_BUTTON, NINE_CHOSE_BUTTON, SIX_CHOSE_BUTTON, TWO_CHOSE_BUTTON} from "../../../Constants/sudoku";
+import {
+    FOUR_CHOSE_BUTTON,
+    NINE_CHOSE_BUTTON,
+    NumbersType,
+    SIX_CHOSE_BUTTON,
+    TWO_CHOSE_BUTTON
+} from "../../../Constants/sudoku";
 
 interface ChangeNumberInterface {
     number: number,
-    numbers: Array<Array<NumbersInterface>>,
-    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersInterface>>>>,
+    numbers: Array<Array<NumbersType>>,
+    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersType>>>>,
     arrWhiteIds: Array<number>
 }
 

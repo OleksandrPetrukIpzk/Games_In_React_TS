@@ -9,8 +9,8 @@ export const SellElement = ({element}: any) => {
     const sellItem = () => {
         const filteredElement = boughtElement.filter((item: ElementInterface) => item.name !== name);
         const startedElement = {name: 'Classic', price: 0, background: 'dodgerblue', color: 'white'};
+        dispatch({type: 'SELL_ELEMENT', coins: price});
         dispatch({type: 'ADD_ELEMENT_TO_LIBRARY', payload: JSON.stringify(filteredElement)});
-        dispatch({type: 'SELL_ELEMENT', payload: price});
         dispatch({type: 'SET_ACTUAL_STYLE', payload: JSON.stringify(startedElement)})
     }
 

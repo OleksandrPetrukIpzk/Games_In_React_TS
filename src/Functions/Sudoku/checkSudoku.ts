@@ -1,7 +1,8 @@
-import {NumbersInterface} from "./checkEveryElement";
+import {NumbersType} from "../../Constants/sudoku";
+
 
 interface CheckSudokuInterface {
-    (numbers: Array<Array<NumbersInterface>>,
+    (numbers: Array<Array<NumbersType>>,
      i: number,
      y: number,
      thisNumber: number,
@@ -9,13 +10,13 @@ interface CheckSudokuInterface {
      endCountRow: number,
      incrementRow: number,
      startCountColumn: number,
-     endCountColumn:number,
-     incrementColumn:number
+     endCountColumn: number,
+     incrementColumn: number
     ): Array<number>
 }
 
-export const checkSudoku : CheckSudokuInterface = (numbers, i, y, thisNumber, startCountRow, endCountRow, incrementRow, startCountColumn, endCountColumn, incrementColumn) => {
-    const arr : Array<number> = [];
+export const checkSudoku: CheckSudokuInterface = (numbers, i, y, thisNumber, startCountRow, endCountRow, incrementRow, startCountColumn, endCountColumn, incrementColumn) => {
+    const arr: Array<number> = [];
     for (let l = startCountRow; l < endCountRow; l += incrementRow) {
         for (let j = startCountColumn; j < endCountColumn; j += incrementColumn) {
             if (numbers[i][y].id !== numbers[l][j].id && thisNumber === numbers[l][j].number && thisNumber) {

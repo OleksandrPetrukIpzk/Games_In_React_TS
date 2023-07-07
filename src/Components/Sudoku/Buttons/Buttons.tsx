@@ -4,12 +4,11 @@ import {PromptNumber} from "./PromptNumber";
 import {AnswerAllSudoku} from "./AnswerAllSudoku";
 import {PrevElement} from "./PrevElement";
 import {DeleteElement} from "./DeleteElement";
-import {NumbersInterface} from "../../../Functions/Sudoku/checkEveryElement";
-import {NUMBER_BUTTONS} from "../../../Constants/sudoku";
+import {NUMBER_BUTTONS, NumbersType} from "../../../Constants/sudoku";
 
 interface ButtonsInterface {
-    numbers: Array<Array<NumbersInterface>>,
-    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersInterface>>>>,
+    numbers: Array<Array<NumbersType>>,
+    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersType>>>>,
     arrWhiteIds: Array<number>
 }
 

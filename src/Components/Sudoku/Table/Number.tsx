@@ -1,8 +1,7 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {colorElement} from "../../../Functions/Sudoku/colorElement";
-import {ZERO} from "../../../Constants/sudoku";
-import {NumbersInterface} from "../../../Functions/Sudoku/checkEveryElement";
+import {NumbersType, ZERO} from "../../../Constants/sudoku";
 import '../style.css'
 
 interface NumberInterface {
@@ -10,7 +9,7 @@ interface NumberInterface {
     id: number | undefined,
     dangerIds: Array<number>,
     idTable: number,
-    numbers: Array<Array<NumbersInterface>>
+    numbers: Array<Array<NumbersType>>
 }
 
 export const Number = ({number, id, dangerIds, idTable, numbers}: NumberInterface) => {
@@ -21,6 +20,7 @@ export const Number = ({number, id, dangerIds, idTable, numbers}: NumberInterfac
     const changeTargetId = () => {
         dispatch({type: 'CHANGE_TARGET', id, target: number, table: idTable})
     }
+
     useEffect(() => {
         if (targetId === id && id !== undefined && dangerIds.includes(id)) {
             colorElement(setStyle, 'orange')

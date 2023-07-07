@@ -1,25 +1,21 @@
 interface InitialStateInterface {
-    infoGame: string,
     repeatWord: string,
     userName: string
 }
 
-const initialState : InitialStateInterface = {
-    infoGame: "[]",
+const initialState: InitialStateInterface = {
     repeatWord: "[]",
     userName: "",
 }
 
 const statisticReducer = (state = initialState, action: any) => {
     switch (action.type) {
-        case 'ADD_LIST':
-            return {...state, infoGame: action.payload}
         case 'ADD_REPEAT_WORD':
             return {...state, repeatWord: action.payload}
-        case 'ADD_USER':{
+        case 'ADD_USER': {
             return {...state, userName: action.payload}
         }
-        case 'REMOVE_USER':{
+        case 'REMOVE_USER': {
             return {...state, userName: ''}
         }
         default:

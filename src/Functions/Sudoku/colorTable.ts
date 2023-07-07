@@ -1,11 +1,12 @@
 import React, {Dispatch} from "react";
 
-interface ColorTableInterface{
+interface ColorTableInterface {
     (
         setStyleTable: Dispatch<React.SetStateAction<object>>,
         fills: string
-    ):void
+    ): void
 }
-export const colorTable : ColorTableInterface = (setStyleTable, fills) =>{
+
+export const colorTable: ColorTableInterface = (setStyleTable, fills) => {
     setStyleTable({border: fills});
 }

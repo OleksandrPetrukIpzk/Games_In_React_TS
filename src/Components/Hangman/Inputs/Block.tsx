@@ -1,14 +1,16 @@
-import {useEffect, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import './style.css'
-interface BlockInterface{
+
+interface BlockInterface {
     value: string,
     letter: string,
     secretWord: string
 }
-export const Block = ({value, letter, secretWord}:BlockInterface) =>{
+
+export const Block = ({value, letter, secretWord}: BlockInterface) => {
     const [isChecked, setIsChecked] = useState<boolean>(false);
-    const wrong = useSelector((state:any) => state.rules.wrong);
+    const wrong = useSelector((state: any) => state.rules.wrong);
     const dispatch = useDispatch();
 
     useEffect(() => {

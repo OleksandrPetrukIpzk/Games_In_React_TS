@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import {FC, useEffect} from "react";
 import {useSelector} from "react-redux";
 import {BlockColorWithName} from "../../Shop/ShopElement/BlockColorWithName";
 import {SellElement} from "../../Shop/ShopElement/SellElement";
@@ -6,7 +6,7 @@ import {EquipElement} from "../../Shop/ShopElement/EquipElement";
 import {changeBackgroundColor} from "../../../Functions/Other/changeBackgroundColor";
 import {ElementInterface} from "../../../Constants/hangman";
 
-export const Library = () => {
+export const Library: FC = () => {
 
     const boughtElement = JSON.parse(useSelector((state: any) => state.store.boughtElement));
     const backgroundStyle = JSON.parse(useSelector((state: any) => state.store.backgroundStyle));

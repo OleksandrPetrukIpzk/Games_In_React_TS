@@ -1,11 +1,11 @@
 import React, {Dispatch} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {generatePrompt} from "../../../Functions/Sudoku/generatePrompt";
-import {NumbersInterface} from "../../../Functions/Sudoku/checkEveryElement";
+import {NumbersType} from "../../../Constants/sudoku";
 
 interface PromptNumberInterface {
-    numbers: Array<Array<NumbersInterface>>,
-    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersInterface>>>>
+    numbers: Array<Array<NumbersType>>,
+    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersType>>>>
 }
 
 export const PromptNumber = ({numbers, setNumbers}: PromptNumberInterface) => {
@@ -15,7 +15,7 @@ export const PromptNumber = ({numbers, setNumbers}: PromptNumberInterface) => {
     const dispatch = useDispatch();
 
     const answer = () => {
-        const changedPrevState: Array<NumbersInterface> = [];
+        const changedPrevState: Array<NumbersType> = [];
         changedPrevState.push(...prevStates);
         changedPrevState.push({id: targetId, number: targetState})
         dispatch({type: 'ADD_PREV_CHANGE', payload: changedPrevState});

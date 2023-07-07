@@ -3,12 +3,13 @@ import {BlockColorWithName} from "../ShopElement/BlockColorWithName";
 import {SellElement} from "../ShopElement/SellElement";
 import {Buy} from "../ShopElement/Buy";
 import {ElementInterface, SHOP_LIST} from "../../../Constants/hangman";
+import {FC} from "react";
 
 interface libraryInterface {
     name: string
 }
 
-export const ListElements = () => {
+export const ListElements: FC = () => {
     const boughtElement = JSON.parse(useSelector((state: any) => state.store.boughtElement));
 
     return (<div style={{display: 'flex', alignItems: 'center'}}>

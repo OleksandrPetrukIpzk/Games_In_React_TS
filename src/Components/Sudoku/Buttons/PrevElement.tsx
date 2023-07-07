@@ -1,12 +1,11 @@
 import React, {Dispatch} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {NumbersInterface} from "../../../Functions/Sudoku/checkEveryElement";
-import {ONE} from "../../../Constants/sudoku";
+import {NumbersType, ONE} from "../../../Constants/sudoku";
 
 
 interface PrevElementInterface {
-    numbers: Array<Array<NumbersInterface>>,
-    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersInterface>>>>,
+    numbers: Array<Array<NumbersType>>,
+    setNumbers: Dispatch<React.SetStateAction<Array<Array<NumbersType>>>>,
     props: string
 }
 
@@ -19,13 +18,13 @@ export const PrevElement = ({numbers, setNumbers, props}: PrevElementInterface) 
     const prevElement = (props: string) => {
 
         let tableId = 0;
-        const state: NumbersInterface = {id: 0, number: 0};
-        const changedPrevState: Array<NumbersInterface> = [];
+        const state: NumbersType = {id: 0, number: 0};
+        const changedPrevState: Array<NumbersType> = [];
         changedPrevState.push(...prevStates);
-        const changedRedoState: Array<NumbersInterface> = [];
+        const changedRedoState: Array<NumbersType> = [];
         changedRedoState.push(...redoStates);
         if (props === "prev" && prevStates.length > 0) {
-            const prevNumbers: Array<Array<NumbersInterface>> = numbers.map((row, index) => {
+            const prevNumbers: Array<Array<NumbersType>> = numbers.map((row, index) => {
                 return row.map(num => {
                     if (num.id === prevStates[prevStates.length - ONE].id) {
                         tableId = index;
@@ -41,7 +40,7 @@ export const PrevElement = ({numbers, setNumbers, props}: PrevElementInterface) 
             setNumbers(prevNumbers);
 
         } else if (props === "redo" && redoStates.length > 0) {
-            const redoNumbers: Array<Array<NumbersInterface>> = numbers.map((row, index) => {
+            const redoNumbers: Array<Array<NumbersType>> = numbers.map((row, index) => {
                 return row.map(num => {
                     if (num.id === redoStates[redoStates.length - ONE].id) {
                         tableId = index;

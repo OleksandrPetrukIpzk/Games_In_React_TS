@@ -8,18 +8,10 @@ import './style.css'
 import axios from "axios";
 
 export const SudokuPopup = () => {
-    const infoGame = useSelector((state: any) => state.statistics.infoGame);
     const userName = useSelector((state: any) => state.statistics.userName);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const datas = JSON.parse(infoGame);
-        datas.push({
-            name: userName,
-            commentaries: "Sudoku",
-            isWin: true,
-            time: new Date(),
-        });
         const data = {
             name: userName,
             commentaries: "Sudoku",
@@ -27,7 +19,6 @@ export const SudokuPopup = () => {
             time: new Date(),
         }
         axios.post('http://localhost:5000/data', data).then(e => console.log(e)).catch(err => console.log(err))
-        dispatch({type: 'ADD_LIST', payload: JSON.stringify(datas)});
         dispatch({type: 'WIN_MONEY', coins: REWARD});
     }, []);
 

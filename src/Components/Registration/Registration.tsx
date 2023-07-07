@@ -11,6 +11,7 @@ export const Registration: FC = () => {
     const userName = useSelector((state: any) => state.statistics.userName);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const registration = async () => {
         const user: object = {name: login, email, password};
         axios.post('http://localhost:5000/registration', user).then(e => {
@@ -18,11 +19,13 @@ export const Registration: FC = () => {
             navigate('/');
         }).catch(err => console.log(err))
     }
+
     useEffect(() => {
         if (userName !== '') {
             navigate('/');
         }
     }, [])
+
     return (<div>
         <input type='text' placeholder='login' onChange={(e) => setLogin(e.target.value)}/>
         <input type='email' placeholder='email' onChange={(e) => setEmail(e.target.value)}/>

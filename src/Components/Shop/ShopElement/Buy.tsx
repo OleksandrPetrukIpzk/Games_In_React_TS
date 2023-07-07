@@ -9,7 +9,7 @@ export const Buy = ({element}: any) => {
         const {price} = element;
         if (coins > price || coins === 0) {
             boughtElement.push(element);
-            dispatch({type: 'BUY_ELEMENT', payload: price});
+            dispatch({type: 'BUY_ELEMENT', coins: price});
             dispatch({type: 'ADD_ELEMENT_TO_LIBRARY', payload: JSON.stringify(boughtElement)});
             dispatch({type: 'SET_ACTUAL_STYLE', payload: JSON.stringify(element)})
         }

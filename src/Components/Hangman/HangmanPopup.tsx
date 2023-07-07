@@ -11,34 +11,28 @@ interface HangmanPopupInterface {
 }
 
 export const HangmanPopup = ({children, secretWord}: HangmanPopupInterface) => {
+
     const {color, background} = JSON.parse(useSelector((state: any) => state.store.backgroundStyle));
     const trueAnswer = useSelector((state: any) => state.rules.trueAnswer);
-    const infoGame = useSelector((state: any) => state.statistics.infoGame);
     const repeatWord = useSelector((state: any) => state.statistics.repeatWord);
     const userName = useSelector((state: any) => state.statistics.userName);
     const listWords: Array<string> = JSON.parse(repeatWord);
-
     let reward: number = 0;
     const dispatch = useDispatch();
 
     useEffect(() => {
         const isWin: boolean = trueAnswer === secretWord.length;
+
         if (isWin) {
+            console.log(isWin);
             if (listWords.includes(secretWord)) {
                 reward = Math.ceil(secretWord.length / MINIMAL_WRONG_COUNT);
             } else {
                 reward = secretWord.length;
                 listWords.push(secretWord);
-                dispatch({type: 'ADD_REPEAT_WORD', payload: JSON.stringify(listWords)})
+                dispatch({type: 'ADD_REPEAT_WORD', repeatWord: JSON.stringify(listWords)})
             }
         }
-        const datas : Array<object> = JSON.parse(infoGame);
-        datas.push({
-           name: userName,
-            isWin,
-            time: Date(),
-            commentaries: secretWord,
-        });
         const data = {
             name: userName,
             isWin,
@@ -46,8 +40,7 @@ export const HangmanPopup = ({children, secretWord}: HangmanPopupInterface) => {
             commentaries: secretWord,
         }
         axios.post('http://localhost:5000/data', data).then(e => console.log(e)).catch(err => console.log(err))
-        dispatch({type: 'ADD_LIST', payload: JSON.stringify(datas)});
-        dispatch({type: 'WIN_MONEY', payload: reward});
+        dispatch({type: 'WIN_MONEY', coins: reward});
 
     }, []);
 
@@ -59,7 +52,7 @@ export const HangmanPopup = ({children, secretWord}: HangmanPopupInterface) => {
         <div className='popup' style={{color: color, background: background}}>
             {children}
             <button onClick={handleReset}>Reset game</button>
-            <Link to='/status'>Status</Link>
+            <Link to='/statistic'>Status</Link>
             <Link to='/shop'>Shop</Link>
         </div>
     </Popup>)

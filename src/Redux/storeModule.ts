@@ -4,7 +4,7 @@ interface InitialStateInterface {
     backgroundStyle: string
 }
 
-const initialState : InitialStateInterface = {
+const initialState: InitialStateInterface = {
     coins: 0,
     boughtElement: '[]',
     backgroundStyle: '{}',
