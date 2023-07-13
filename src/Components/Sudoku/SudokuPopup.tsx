@@ -1,14 +1,15 @@
-import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {REWARD} from "../../Constants/sudoku";
+import {useDispatch, useSelector} from "react-redux";
+import axios from "axios";
 import {Link} from "react-router-dom";
 import Popup from "reactjs-popup";
+import {REWARD} from "../../Constants/sudoku";
 import 'reactjs-popup/dist/index.css';
 import './style.css'
-import axios from "axios";
 
 export const SudokuPopup = () => {
     const userName = useSelector((state: any) => state.statistics.userName);
+    let reward: number = useSelector((state: any) => state.statistics.userCoins) + REWARD;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,8 +19,12 @@ export const SudokuPopup = () => {
             isWin: true,
             time: new Date(),
         }
-        axios.post('http://localhost:5000/data', data).then(e => console.log(e)).catch(err => console.log(err))
-        dispatch({type: 'WIN_MONEY', coins: REWARD});
+        dispatch({type: 'ADD_USER', payload: userName, coins: reward});
+        axios.post('http://localhost:5000/data', data).then(e => console.log(e)).catch(err => console.log(err));
+        axios.post('http://localhost:5000/user', {
+            name: userName,
+            money: reward
+        }).then(e => console.log(e)).catch(e => console.log(e));
     }, []);
 
     const handleReset = () => {

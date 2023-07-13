@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import {useNavigate} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router";
+import {Link} from "react-router-dom";
 import axios from "axios";
 
 export const Login: FC = () => {
@@ -14,7 +14,8 @@ export const Login: FC = () => {
     const login = async () => {
         const user: object = {email, password};
         axios.post('http://localhost:5000/login', user).then(e => {
-            dispatch({type: 'ADD_USER', payload: e.data.user.name})
+            dispatch({type: 'ADD_USER', payload: e.data.user.name, coins: e.data.user.money});
+
             navigate('/');
         }).catch(err => console.log(err))
     }
